@@ -9,7 +9,16 @@
 </head>
 <header>Rock Paper Scissors</header>
 <body>
-  <div class="score-board"></div>
+  <div class="score-board">
+    <!-- Allocating id's and classes now since they will need to be styled in isolation, and collectively -->
+    <div id="user-badge" class="badge">user</div> 
+    <div id="cpu-badge" class="badge">cpu</div>
+    <span id="user-score">0</span>:<span id="cpu-score">0</span>
+  </div>
+  <!-- HTML text for placeholder purpose only -->
+  <div class="result">Rock smashes scissors!</div> 
+
+  <div class="choices"></div>
   
   <script src="/scripts.js"></script>
 </body>
