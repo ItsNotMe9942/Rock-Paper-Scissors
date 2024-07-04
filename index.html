@@ -3,26 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Permanent+Marker&family=Rubik+Mono+One&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="/styles.css">
   <title>Document</title>
 </head>
-<header>Rock Paper Scissors</header>
+<header>
+  <h1>Rock Paper Scissors</h1>
+</header>
 <body>
-  <div class="score-board">
+  <div id="score-board">
     <!-- Allocating id's and classes now since they will need to be styled in isolation, and collectively -->
     <div id="user-badge" class="badge">user</div> 
     <div id="cpu-badge" class="badge">cpu</div>
     <span id="user-score">0</span>:<span id="cpu-score">0</span>
   </div>
   <!-- HTML text for placeholder purpose only -->
-  <div class="result">Rock smashes scissors!</div> 
-
-  <div class="choices">
-    <div id="rock"><img src="/images/rock-emoji.png" alt="rock"></div>
-    <div id="paper"><img src="/images/paper-emoji.png" alt="paper"></div>
-    <div id="scissors"><img src="/images/scissors-emoji.png" alt="scissors"></div>
+  
+  <div id="choices">
+    <div id="rock" class="choice"><img src="/images/rock-emoji.png" alt="rock"></div>
+    <div id="paper" class="choice"><img src="/images/paper-emoji.png" alt="paper"></div>
+    <div id="scissors" class="choice"><img src="/images/scissors-emoji.png" alt="scissors"></div>
   </div>
+
+  <p class="result">Rock smashes scissors!</p> 
   
   <script src="/scripts.js"></script>
 </body>

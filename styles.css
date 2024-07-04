@@ -1,0 +1,74 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header{
+  background-color: white;
+}
+
+header > h1{
+  text-align: center;
+  padding: 20px;
+  color: black;
+}
+
+body{
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+img{
+  height: 80px;
+}
+
+#score-board{
+  position: relative;
+  border: solid;
+  width: 250px;
+  height: 100px;
+  margin: 30px auto;
+  align-content: center;
+  font-size: 50px;
+}
+
+.result{
+  padding: 25px
+}
+
+.choice{
+  display: inline-block;
+  border-style: solid;
+  border-color: white;
+  margin: 10px;
+  padding: 22px;
+  border-radius: 50%;
+}
+
+#scissors{
+  transform: rotate(270deg);
+}
+
+.badge{
+  background-color: red;
+  width: 70px;
+  font-size: 18px;
+  text-align: center;
+  padding-bottom: 3px;
+}
+
+#user-badge{
+  position: absolute;
+  top: 30px;
+  left: -40px;
+}
+
+#cpu-badge{
+  position: absolute;
+  top: 30px;
+  right: -40px
+}
+
+
