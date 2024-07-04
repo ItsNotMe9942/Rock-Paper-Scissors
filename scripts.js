@@ -27,7 +27,14 @@ scissorsElem.addEventListener('click', () => {
 
 const playGame = (userMove) => {
   console.log(userMove)
-}
+};
+
+const computerMove = () => {
+  const randomNumber = Math.ceil(Math.random() * 3);
+  console.log(randomNumber);
+};
+
+computerMove();
 
 
 
