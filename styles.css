@@ -40,9 +40,10 @@ img{
   border-radius: 5px;
 }
 
-.result{
+#result{
   padding: 25px;
   font-size: 25px;
+  
 }
 
 .choice{
@@ -92,4 +93,8 @@ h3{
 .red-text{
   color: red;
   font-size: x-large;
+}
+
+.scissors{
+  transform: rotate(270deg);
 }
