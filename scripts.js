@@ -22,57 +22,63 @@ scissorsElem.addEventListener('click', () => {
   playGame('scissors');
 });
 
+let score = JSON.parse(localStorage.getItem('score')) || {
+  wins: 0,
+  losses: 0
+}
+
 const playGame = userMove => {
   const computerMove = pickComputerMove();
   messageElem.remove();
   resultElem.innerHTML = `You <img src="images/${userMove}-emoji.png"><img src="images/${computerMove}-emoji.png"> CPU`;
+
+  let result = ''
   
   if (userMove === 'rock') {
     if (computerMove === 'rock') {
-      console.log('draw')
-      return 'Draw';
+      console.log('draw');
+      
     } else if (computerMove === 'paper') {
-      console.log('lose')
+      console.log('lose');
       score.losses ++;
-      return 'You lose!';
+     
     } else {
-      console.log('win')
+      console.log('win');
       score.wins ++;
-      return 'You win!';
+      
     }
 
   } else if (userMove === 'paper') {
     if (computerMove === 'rock') {
-      console.log('win')
+      console.log('win');
       score.wins ++;
-      return 'You win!';
+      
     } else if (computerMove === 'paper') {
       console.log('draw');
-      return 'Draw';
+      
     } else {
-      console.log('lose')
+      console.log('lose');
       score.losses ++;
-      return 'You lose!';
+      
     }
     
   } else if (userMove === 'scissors') {
     if (computerMove === 'rock') {
-      console.log('lose')
+      console.log('lose');
       score.losses ++;
-      return 'You lose!';
+      
     } else if (computerMove === 'paper' ) {
-      console.log('win');
       score.wins ++;
-      return 'You win!';
+      console.log('win');
+      ;
     } else {
       console.log('draw')
-      return 'draw';
+      
     }
   }
-  
   console.log(score);
 
-  
+  updateScore();
 };
 
 const pickComputerMove = () => {
@@ -89,21 +95,11 @@ const pickComputerMove = () => {
   }
 };
 
-const score = {
-  wins: 0,
-  losses: 0
-};
-console.log(score)
-
-
 const updateScore = () => {
-  if (userMove = 'win') {
-
-  }
+  userScoreElem.innerHTML = score.wins;
+  cpuScoreElem.innerHTML = score.losses;
+  localStorage.setItem('score', JSON.stringify(score));
 }
-
-
-  
 
 
 
