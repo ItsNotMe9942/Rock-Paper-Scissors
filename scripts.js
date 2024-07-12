@@ -9,6 +9,8 @@ const paperElem = document.getElementById('paper');
 const scissorsElem = document.getElementById('scissors');
 const messageElem = document.getElementById('message');
 const redTextElem = document.querySelector('.red-text');
+const autoPlayElem = document.getElementById('auto-play');
+const resetButtonElem = document.getElementById('reset-button');
 
 rockElem.addEventListener('click', () => {
   playGame('rock');
@@ -28,6 +30,27 @@ let score = JSON.parse(localStorage.getItem('score')) || {
 };
 
 updateScore();
+
+let isAutoPlaying = false;
+let intervalId;
+
+function autoPlay() {
+  if (!isAutoPlaying) {
+    intervalId = setInterval(() => {
+      const userMove = pickComputerMove();
+      playGame(userMove);
+      movesElem.removeEventListener('click', () => {
+        autoPlayElem
+      })
+    }, 1000);
+    isAutoPlaying = true;
+    scoreBoardElem.style.color = '#34f240';
+  } else {
+    clearInterval(intervalId);
+    isAutoPlaying = false;
+    scoreBoardElem.style.color = 'whitesmoke'
+  }
+};
 
 const playGame = userMove => {
   const computerMove = pickComputerMove();
@@ -68,8 +91,6 @@ const playGame = userMove => {
       console.log('draw')
     }
   }
-  console.log(score);
-
   updateScore();
 };
 
@@ -91,43 +112,54 @@ function updateScore() {
   userScoreElem.innerHTML = score.wins;
   cpuScoreElem.innerHTML = score.losses;
   localStorage.setItem('score', JSON.stringify(score));
-  
 };
 
 scoreBoardElem.addEventListener('mouseenter', () => { 
-  const resetButtonElem = document.createElement('div');
-  resetButtonElem.innerHTML = 'reset'
-  resetButtonElem.classList.add('reset-button', 'badge')
-  scoreBoardElem.appendChild(resetButtonElem);
-
-  resetButtonElem.addEventListener('click', () => {
-    score.wins = 0;
-    score.losses = 0;
-    updateScore();
-    resultElem.innerHTML = '';
-    console.log(score);
-    document.body.appendChild(messageElem)
-  })
-
-  resetButtonElem.addEventListener('mouseleave', () => {
-    scoreBoardElem.removeChild(resetButtonElem);
-  })
-
-  scoreBoardElem.addEventListener('mouseleave', () => {
-    scoreBoardElem.removeChild(resetButtonElem);
-  })
+  setTimeout(() => {
+    autoPlayElem.style.display = 'initial';
+    resetButtonElem.style.display = 'initial'
+    autoPlayElem.addEventListener('click', () => {
+      autoPlay();
+    });
+    }, 250)
 });
 
+scoreBoardElem.addEventListener('mouseleave', () => {
+  autoPlayElem.style.display = 'none';
+  resetButtonElem.style.display = 'none';
+  autoPlayElem.addEventListener('click', () => {
+    autoPlay();
+  })
+})
 
+resetButtonElem.addEventListener('click', () => {
+  score.wins = 0;
+  score.losses = 0;
+  updateScore();
+  resultElem.innerHTML = '';
+  console.log(score);
+  document.body.append(messageElem)
+})
 
-
-
-
-
-
-
-
-
-
+document.body.addEventListener('keydown', event => {
+  if (event.key === 'r') {
+    playGame('rock');
+  } else if (event.key === 'p') {
+    playGame('paper');
+  } else if (event.key === 's') {
+    playGame('scissors');
+  } else if (event.key === 'Enter') {
+    const userInput = confirm('Are you sure you want to reset the score board?');
+    if (userInput) {
+      score.wins = 0;
+      score.losses = 0;
+      updateScore();
+      resultElem.innerHTML = '';
+      document.body.appendChild(messageElem);
+    }
+  } else if (event.key === 'a') {
+    autoPlay();
+  }
+});
 
 
