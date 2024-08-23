@@ -161,5 +161,3 @@ document.body.addEventListener('keydown', event => {
     autoPlay();
   }
 });
-
-
