@@ -59,36 +59,24 @@ const playGame = userMove => {
   resultElem.innerHTML = `You <img src="images/${userMove}-emoji.png"><img src="images/${computerMove}-emoji.png"> CPU`;
   
   if (userMove === 'rock') {
-    if (computerMove === 'rock') {
-      console.log('draw');
-    } else if (computerMove === 'paper') {
-      console.log('lose');
+    if (computerMove === 'paper') {
       score.losses ++;
-    } else {
-      console.log('win');
+    } else if (computerMove === 'scissors') {
       score.wins ++;
     }
 
   } else if (userMove === 'paper') {
     if (computerMove === 'rock') {
-      console.log('win');
       score.wins ++;
-    } else if (computerMove === 'paper') {
-      console.log('draw');
-    } else {
-      console.log('lose');
+    } else if (computerMove === 'scissors') {
       score.losses ++;
     }
     
   } else if (userMove === 'scissors') {
     if (computerMove === 'rock') {
-      console.log('lose');
       score.losses ++;
     } else if (computerMove === 'paper' ) {
       score.wins ++;
-      console.log('win');
-    } else {
-      console.log('draw')
     }
   }
   updateScore();
@@ -97,13 +85,10 @@ const playGame = userMove => {
 const pickComputerMove = () => {
   const randomNumber = Math.ceil(Math.random() * 3);
   if (randomNumber === 1) {
-    console.log('rock');
     return 'rock';
   } else if (randomNumber === 2) {
-    console.log('paper');
     return 'paper';
   } else {
-    console.log('scissors');
     return 'scissors';
   }
 };
@@ -137,7 +122,6 @@ resetButtonElem.addEventListener('click', () => {
   score.losses = 0;
   updateScore();
   resultElem.innerHTML = '';
-  console.log(score);
   document.body.append(messageElem)
 })
 
