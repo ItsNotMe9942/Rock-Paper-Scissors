@@ -144,3 +144,20 @@ h3{
   position: absolute;
   right: 30px;
 }
+
+@media (max-width: 675px) {
+  header h1 {
+    font-size: 25px;
+  }
+  
+  #score-board {
+    transform: scale(.70);
+    transform-origin: auto;
+  }
+ 
+  #choices{
+    transform: scale(.60);
+    transform-origin: auto;
+  }
+  
+}
