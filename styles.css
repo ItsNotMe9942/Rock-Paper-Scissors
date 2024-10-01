@@ -145,7 +145,7 @@ h3{
   right: 30px;
 }
 
-@media (max-width: 675px) {
+@media (max-width: 375px) {
   header h1 {
     font-size: 25px;
   }
@@ -153,11 +153,23 @@ h3{
   #score-board {
     transform: scale(.70);
     transform-origin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
- 
-  #choices{
+
+  #result {
     transform: scale(.60);
     transform-origin: auto;
   }
+ 
+  #choices{
+    transform: scale(.55);
+    transform-origin: auto;
+  }
+
+  #message span{
+    margin-top: none;
+  }
+  
   
 }
